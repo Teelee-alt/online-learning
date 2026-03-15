@@ -7,7 +7,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Progress } from '@/components/ui/progress';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Badge } from '@/components/ui/badge';
-import { BookOpen, CheckCircle, Clock, Target, Award, TrendingUp, LogOut, Settings } from 'lucide-react';
+import { BookOpen, CheckCircle, Clock, Target, Award, TrendingUp, LogOut, Settings, ArrowRight } from 'lucide-react';
 
 const motivationalMessages = [
   "Keep pushing! You're doing amazing!",
