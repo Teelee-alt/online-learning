@@ -103,7 +103,7 @@ export default function HomePage() {
         </nav>
 
           {/* Hero Section */}
-        <section className="pt-40 pb-20 px-4 sm:px-6 lg:px-8">
+        <section className="pt-30 pb-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           <div className="text-center">
             <div className="fixed top-20 left-1/2 transform -translate-x-1/2 z-40">
@@ -112,7 +112,7 @@ export default function HomePage() {
               </div>
             </div>
 
-            <h1 className="text-5xl md:text-7xl font-bold mb-6 text-balance mt-16">
+            <h1 className="text-5xl md:text-7xl font-bold mb-6 text-balance mt-6">
               <span className="gradient-text">Learn Anything.</span>
               <br />
               <span className="text-gray-800">Completely Free.</span>

@@ -377,7 +377,6 @@ export default function CoursePage({ params }: { params: { id: string; level: st
               {showFeedback && (
                 <div className="mt-8">
                   <CourseFeedback
-                    courseId={params.id}
                     courseLevel={level}
                     courseName={title || course.certificateTitle}
                     onSubmit={() => {

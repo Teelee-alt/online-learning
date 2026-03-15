@@ -182,15 +182,15 @@ export default function AdminPage() {
     return matchesSearch && matchesLevel
   })
 
-  const handleEditUser = (userId) => {
+  const handleEditUser = (userId: string | number) => {
     alert(`Edit user ${userId} - Form would open here`)
   }
 
-  const handleEditRating = (ratingId) => {
+  const handleEditRating = (ratingId: string | number) => {
     alert(`Edit rating ${ratingId} - Rating editor would open here`)
   }
 
-  const handleDeleteRating = (ratingId) => {
+  const handleDeleteRating = (ratingId: string | number) => {
     alert(`Rating ${ratingId} deleted`)
   }
 
