@@ -1,14 +1,16 @@
 /** @type {import('next').NextConfig} */
+const path = require('path')
+
 const nextConfig = {
   webpack: (config, { isServer }) => {
     config.cache = {
       type: 'filesystem',
-      cacheDirectory: '.next/cache',
+      cacheDirectory: path.join(__dirname, '.next/cache'),
       buildDependencies: {
         config: [__filename],
       },
       // Optimize cache serialization for large strings
-      managedPaths: isServer ? ['node_modules'] : undefined,
+      managedPaths: isServer ? [path.join(__dirname, 'node_modules')] : undefined,
       hashAlgorithm: 'md4',
       name: `${isServer ? 'server' : 'client'}-${Date.now()}`,
       // Use Buffer instead of strings for large data
