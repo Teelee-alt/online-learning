@@ -565,7 +565,7 @@ export const accountingFundamentalsCourseData = {
             "90 days"
           ],
           correctAnswer: 1,
-          explanation: "365 days ÷ 8 = 45.6 days average collection period. Higher turnover = faster collections."
+          explanation: "365 divided by 8 equals 45.6 days average collection period. Higher turnover means faster collections."
         },
         {
           id: 5,

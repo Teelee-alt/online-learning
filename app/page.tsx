@@ -3,7 +3,7 @@
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
-import { BookOpen, Users, Award, Globe, ArrowRight, Play, CheckCircle, GraduationCap } from "lucide-react"
+import { Users, Award, Globe, ArrowRight, Play, CheckCircle, GraduationCap } from "lucide-react"
 import { useSecretAdminAccess } from "@/hooks/use-secret-admin-access"
 import { SecretAdminModal } from "@/components/secret-admin-modal"
 import { platformBenefits, platformFeatures } from "@/lib/seo-content"
@@ -66,7 +66,7 @@ export default function HomePage() {
         onClose={closePrompt}
       />
 
-      <div className="min-h-screen bg-gradient-to-br from-blue-50 via-purple-50 to-white">
+      <div className="min-h-screen bg-gradient-to-br from-blue-50 via-purple-100 to-white">
         {/* Navigation */}
         <nav className="glass-card fixed top-0 w-full z-50 border-b border-gray-200/50">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -103,16 +103,14 @@ export default function HomePage() {
         </nav>
 
           {/* Hero Section */}
-        <section className="pt-30 pb-20 px-4 sm:px-6 lg:px-8">
+        <section className="pt-35 pb-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           <div className="text-center">
-            <div className="fixed top-20 left-1/2 transform -translate-x-1/2 z-40">
-              <div className="inline-flex items-center px-6 py-3 rounded-full bg-gradient-to-r from-blue-100 to-blue-200 text-blue-700 text-sm font-semibold shadow-lg">
-                Free Learning - Certificate & Diploma Programs A-Z
-              </div>
+            <div className="inline-flex items-center px-6 py-3 rounded-full bg-gradient-to-r from-blue-100 to-blue-200 text-blue-700 text-sm font-semibold shadow-lg mb-8">
+              Free Learning - Certificate & Diploma Programs A-Z
             </div>
 
-            <h1 className="text-5xl md:text-7xl font-bold mb-6 text-balance mt-6">
+            <h1 className="text-5xl md:text-7xl font-bold mb-6 text-balance mt-12">
               <span className="gradient-text">Learn Anything.</span>
               <br />
               <span className="text-gray-800">Completely Free.</span>
@@ -285,17 +283,21 @@ export default function HomePage() {
         </section>
 
           {/* Footer */}
-        <footer className="bg-gray-900 text-white py-12 px-4 sm:px-6 lg:px-8">
+        <footer className="bg-gradient-to-r from-blue-900 via-purple-900 to-indigo-900 text-white py-12 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-col md:flex-row justify-between items-center">
-            <div className="flex items-center space-x-2 mb-4 md:mb-0">
-              <div className="w-10 h-10 bg-gradient-to-r from-blue-600 to-blue-700 rounded-xl flex items-center justify-center">
-                <BookOpen className="w-6 h-6 text-white" />
+            <div className="flex items-center space-x-3 mb-4 md:mb-0">
+              <div className="w-10 h-10 rounded-full overflow-hidden shadow-lg border-2 border-blue-400">
+                <img
+                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/ChatGPT%20Image%20Jan%2022%2C%202026%2C%2012_21_21%20AM-WKqkdSRv1DtoghNmzkCDSdNQKXoMsG.png"
+                  alt="Edusanna Logo"
+                  className="w-full h-full object-cover"
+                />
               </div>
               <span className="text-2xl font-bold">EDUSANNA</span>
             </div>
             <div className="text-center md:text-right">
-              <p className="text-gray-400">© 2025 EDUSANNA. Transforming lives through education.</p>
+              <p className="text-gray-300">© 2025 EDUSANNA. Transforming lives through education.</p>
             </div>
           </div>
         </div>
