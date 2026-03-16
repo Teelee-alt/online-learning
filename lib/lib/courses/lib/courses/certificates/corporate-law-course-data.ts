@@ -537,7 +537,7 @@ Corporate governance establishes the framework for decision-making and accountab
           question: "What law requires shareholder advisory votes on executive compensation?",
           options: ["Sarbanes-Oxley Act", "Dodd-Frank Act", "Securities Act of 1933", "Exchange Act of 1934"],
           correctAnswer: 1,
-          explanation: "The Dodd-Frank Act requires "say-on-pay" shareholder advisory votes on executive compensation."
+          explanation: "The Dodd-Frank Act requires say-on-pay shareholder advisory votes on executive compensation."
         },
         {
           id: 20,
