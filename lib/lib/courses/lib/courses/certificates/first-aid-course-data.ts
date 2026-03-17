@@ -248,12 +248,12 @@ Remember: Your safety comes first. Never become another victim.
           question: "When checking response, what should you do?",
           options: [
             "Shake the person hard",
-            "Tap and shout "Are you okay?"",
+            "Tap and shout \"Are you okay?\"",
             "Pour water on their face",
             "Check pulse immediately"
           ],
           correctAnswer: 1,
-          explanation: "Tap the person's shoulder and shout "Are you okay?" to check for response."
+          explanation: "Tap the person's shoulder and shout \"Are you okay?\" to check for response."
         },
         {
           id: 13,
@@ -3084,3 +3084,4 @@ Remember: Your safety comes first in all environmental emergencies and special s
     ]
   }
 };
+
