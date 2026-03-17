@@ -9,6 +9,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { BookOpen, ArrowLeft, User, Mail, Phone, MapPin } from "lucide-react"
+import { GoogleSignInButton } from "@/components/auth/google-signin-button"
 
 export default function SignupPage() {
   const [formData, setFormData] = useState({
@@ -192,6 +193,17 @@ export default function SignupPage() {
                 {isLoading ? "Creating Account..." : "Create Account"}
               </Button>
             </form>
+
+            <div className="relative my-6">
+              <div className="absolute inset-0 flex items-center">
+                <div className="w-full border-t border-gray-200"></div>
+              </div>
+              <div className="relative flex justify-center text-sm">
+                <span className="px-2 bg-white text-gray-500">Or sign up with</span>
+              </div>
+            </div>
+
+            <GoogleSignInButton />
 
             <div className="text-center mt-6">
               <p className="text-gray-600">
