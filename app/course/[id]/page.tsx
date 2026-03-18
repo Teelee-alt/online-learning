@@ -6,6 +6,8 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Progress } from "@/components/ui/progress"
 import { BookOpen, ArrowLeft, Play, Clock, Users, Star, CheckCircle, Lock, Award } from "lucide-react"
+import { SkillsShowcase } from "@/components/course/skills-showcase"
+import { getDiplomaSkills } from "@/lib/diploma-course-skills"
 
 export default function CoursePage({ params }: { params: { id: string } }) {
   const [currentModule, setCurrentModule] = useState(1)
@@ -76,6 +78,9 @@ export default function CoursePage({ params }: { params: { id: string } }) {
   const progress = (completedModules / course.modules.length) * 100
 
   const currentModuleData = course.modules.find((m) => m.id === currentModule)
+  
+  // Get skills for this diploma course
+  const courseSkills = getDiplomaSkills(course.title)
 
   return (
     <div className="min-h-screen">
@@ -147,6 +152,9 @@ export default function CoursePage({ params }: { params: { id: string } }) {
                   </div>
                 </CardHeader>
               </Card>
+
+              {/* Skills Showcase */}
+              <SkillsShowcase skills={courseSkills} courseTitle={course.title} />
 
               {/* Module Content */}
               {!showExercise ? (
@@ -424,3 +432,4 @@ function ExerciseComponent({
     </Card>
   )
 }
+
