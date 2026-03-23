@@ -49,7 +49,7 @@ export default function CoursesPage() {
             </div>
             <div className="flex items-center space-x-4">
               <Link href="/verify">
-                <Button variant="ghost" className="text-gray-700 hover:text-blue-600 hidden sm:flex">
+                <Button variant="ghost" className="text-white-700 hover:text-blue-600 hidden sm:flex">
                   Verify Certificate
                 </Button>
               </Link>
@@ -73,12 +73,12 @@ export default function CoursesPage() {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
             <div className="flex items-center gap-2 glass-card p-3 rounded-xl border-gray-200">
               <GraduationCap className="w-5 h-5 text-blue-600" />
-              <span className="font-semibold text-gray-700">Certificate</span>
+              <span className="font-semibold text-white-700">Certificate</span>
               <Badge className="bg-blue-100 text-blue-700">Foundation</Badge>
             </div>
             <div className="flex items-center gap-2 glass-card p-3 rounded-xl border-gray-200">
               <Award className="w-5 h-5 text-gray-700" />
-              <span className="font-semibold text-gray-700">Diploma</span>
+              <span className="font-semibold text-white-700">Diploma</span>
               <Badge className="bg-gray-100 text-gray-700">Advanced</Badge>
             </div>
           </div>
@@ -102,7 +102,7 @@ export default function CoursesPage() {
           <div className="glass-card p-4 rounded-xl border-gray-200">
             <div className="flex items-center gap-2 mb-3">
               <Filter className="w-5 h-5 text-blue-600" />
-              <span className="font-semibold text-gray-700">Filter by Letter:</span>
+              <span className="font-semibold text-white-700">Filter by Letter:</span>
             </div>
             <div className="flex flex-wrap gap-2">
               <Button
@@ -163,7 +163,7 @@ export default function CoursesPage() {
 
       <section className="pb-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
-          <div className="mb-6 text-gray-600">
+          <div className="mb-6 text-white-600">
             Showing {filteredCourses.length} course{filteredCourses.length !== 1 ? "s" : ""}
           </div>
 
