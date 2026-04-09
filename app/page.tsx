@@ -66,20 +66,25 @@ export default function HomePage() {
         onClose={closePrompt}
       />
 
-      <div className="min-h-screen bg-gradient-to-br from-blue-900 via-purple-900 to-slate-900 relative overflow-hidden">
-        {/* Animated background elements */}
+      <div className="min-h-screen bg-gradient-to-br from-blue-500 via-purple-500 to-pink-400 relative overflow-hidden">
+        {/* Animated cosmic background elements */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-0 right-0 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl animate-glow"></div>
-          <div className="absolute bottom-0 left-0 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl animate-glow" style={{ animationDelay: "1s" }}></div>
-          <div className="absolute top-1/2 left-1/2 w-96 h-96 bg-pink-500/10 rounded-full blur-3xl animate-glow" style={{ animationDelay: "2s" }}></div>
+          <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-purple-500/20 rounded-full blur-3xl animate-glow"></div>
+          <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-blue-400/20 rounded-full blur-3xl animate-glow" style={{ animationDelay: "1s" }}></div>
+          <div className="absolute top-1/2 left-1/2 w-[500px] h-[500px] bg-pink-400/20 rounded-full blur-3xl animate-glow" style={{ animationDelay: "2s" }}></div>
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-slate-900/20"></div>
         </div>
 
-        {/* Particle effect overlay */}
-        <div className="absolute inset-0 opacity-20">
+        {/* Enhanced particle/sparkle effect overlay */}
+        <div className="absolute inset-0 opacity-30 pointer-events-none">
           <div className="absolute top-20 right-20 w-2 h-2 bg-white rounded-full animate-pulse"></div>
-          <div className="absolute top-40 right-40 w-1 h-1 bg-purple-300 rounded-full animate-pulse" style={{ animationDelay: "0.5s" }}></div>
-          <div className="absolute bottom-32 left-1/4 w-2 h-2 bg-blue-300 rounded-full animate-pulse" style={{ animationDelay: "1s" }}></div>
-          <div className="absolute bottom-20 right-1/3 w-1.5 h-1.5 bg-white rounded-full animate-pulse" style={{ animationDelay: "1.5s" }}></div>
+          <div className="absolute top-40 right-40 w-1 h-1 bg-blue-200 rounded-full animate-pulse" style={{ animationDelay: "0.5s" }}></div>
+          <div className="absolute top-32 right-1/3 w-1.5 h-1.5 bg-white rounded-full animate-pulse" style={{ animationDelay: "0.7s" }}></div>
+          <div className="absolute bottom-32 left-1/4 w-2 h-2 bg-purple-200 rounded-full animate-pulse" style={{ animationDelay: "1s" }}></div>
+          <div className="absolute bottom-40 right-1/4 w-1 h-1 bg-white rounded-full animate-pulse" style={{ animationDelay: "1.2s" }}></div>
+          <div className="absolute bottom-20 right-1/3 w-1.5 h-1.5 bg-blue-300 rounded-full animate-pulse" style={{ animationDelay: "1.5s" }}></div>
+          <div className="absolute top-1/3 left-1/3 w-1 h-1 bg-pink-200 rounded-full animate-pulse" style={{ animationDelay: "1.8s" }}></div>
+          <div className="absolute bottom-1/3 right-1/2 w-2 h-2 bg-white rounded-full animate-pulse" style={{ animationDelay: "2s" }}></div>
         </div>
         {/* Navigation */}
         <nav className="glass-card fixed top-0 w-full z-50 border-b border-white/10 backdrop-blur-3xl">
@@ -154,14 +159,25 @@ export default function HomePage() {
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16 mt-20">
               {stats.map((stat, index) => (
                 <div key={index} className="text-center group cursor-pointer">
-                  <div className="icon-badge-lg mx-auto mb-4 group-hover:scale-110 transition-transform">
-                    {index === 0 && <span className="text-3xl">📚</span>}
-                    {index === 1 && <span className="text-3xl">🎓</span>}
-                    {index === 2 && <span className="text-3xl">💰</span>}
-                    {index === 3 && <span className="text-3xl">🎧</span>}
+                  <div className="relative inline-flex items-center justify-center mb-4">
+                    {/* Neon glow ring effect */}
+                    <div className="absolute inset-0 rounded-full bg-gradient-to-br from-blue-400 via-purple-400 to-pink-400 opacity-0 group-hover:opacity-100 blur-lg transition-opacity duration-300" style={{
+                      width: '120px',
+                      height: '120px',
+                      left: '50%',
+                      top: '50%',
+                      transform: 'translate(-50%, -50%)'
+                    }}></div>
+                    {/* Icon badge with glass effect */}
+                    <div className="relative w-24 h-24 rounded-full bg-gradient-to-br from-blue-500/30 via-purple-500/30 to-pink-500/30 border-2 border-white/30 backdrop-blur-xl flex items-center justify-center shadow-2xl group-hover:scale-110 group-hover:border-white/50 transition-all duration-300">
+                      {index === 0 && <span className="text-4xl">📚</span>}
+                      {index === 1 && <span className="text-4xl">🎓</span>}
+                      {index === 2 && <span className="text-4xl">💰</span>}
+                      {index === 3 && <span className="text-4xl">🎧</span>}
+                    </div>
                   </div>
-                  <div className="text-4xl md:text-5xl font-black gradient-text mb-2">{stat.number}</div>
-                  <div className="text-blue-200 font-semibold">{stat.label}</div>
+                  <div className="text-3xl md:text-4xl font-black text-white mb-2">{stat.number}</div>
+                  <div className="text-blue-100 font-semibold text-sm">{stat.label}</div>
                 </div>
               ))}
             </div>
