@@ -68,7 +68,7 @@ export default function HomePage() {
 
       <div className="min-h-screen relative overflow-hidden">
         {/* Navigation */}
-        <nav className="fixed top-0 w-full z-50 backdrop-blur-2xl bg-white/5 border-b border-white/10">
+        <nav className="fixed top-0 w-full z-50 backdrop-blur-xl bg-white/70 border-b border-blue-200/30">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex justify-between items-center h-20 relative z-10">
               <button
@@ -76,7 +76,7 @@ export default function HomePage() {
                 className="flex items-center space-x-3 hover:opacity-90 transition transform hover:scale-105"
                 title="Edusanna - Elevate Your Mind"
               >
-                <div className="w-14 h-14 rounded-full overflow-hidden shadow-2xl border-2 border-blue-400 glow-blue">
+                <div className="w-14 h-14 rounded-full overflow-hidden shadow-md border-2 border-blue-500">
                   <img
                     src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/ChatGPT%20Image%20Jan%2022%2C%202026%2C%2012_21_21%20AM-WKqkdSRv1DtoghNmzkCDSdNQKXoMsG.png"
                     alt="Edusanna Logo"
@@ -85,12 +85,12 @@ export default function HomePage() {
                 </div>
                 <div>
                   <span className="text-3xl font-bold gradient-text">EDUSANNA</span>
-                  <div className="text-xs text-blue-300 font-medium">Elevate Your Mind</div>
+                  <div className="text-xs text-blue-600 font-medium">Elevate Your Mind</div>
                 </div>
               </button>
               <div className="flex items-center space-x-4">
                 <Link href="/login">
-                  <Button variant="ghost" className="text-white hover:text-blue-300 hover:bg-white/10">
+                  <Button variant="ghost" className="text-blue-700 hover:text-blue-800 hover:bg-blue-50">
                     Login
                   </Button>
                 </Link>
@@ -106,17 +106,17 @@ export default function HomePage() {
         <section className="pt-40 pb-24 px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="max-w-7xl mx-auto">
           <div className="text-center">
-            <div className="inline-flex items-center px-6 py-3 rounded-full backdrop-blur-xl bg-white/10 text-slate-100 text-sm font-bold shadow-xl mb-8 border-white/20">
+            <div className="inline-flex items-center px-6 py-3 rounded-full backdrop-blur-md bg-blue-100/50 text-blue-900 text-sm font-semibold shadow-sm mb-8 border border-blue-200">
                Free Learning - Certificate & Diploma Programs A-Z
             </div>
 
             <h1 className="text-5xl md:text-8xl font-black mb-8 text-balance mt-8 leading-tight">
-              <span className="text-slate-900">Learn Anything.</span>
+              <span className="text-blue-900">Learn Anything.</span>
               <br />
-              <span className="text-slate-700">Completely Free.</span>
+              <span className="text-blue-700">Completely Free.</span>
             </h1>
 
-            <p className="text-xl md:text-2xl text-slate-700 mb-12 max-w-3xl mx-auto leading-relaxed font-light">
+            <p className="text-xl md:text-2xl text-blue-800 mb-12 max-w-3xl mx-auto leading-relaxed font-light">
               Create a free account and access all courses instantly. Learn at your own pace completely for free, track your progress and only pay when you're ready to receive an official, prestigious Certificate ($12) or Diploma ($18).
             </p>
 
@@ -147,7 +147,7 @@ export default function HomePage() {
                     {index === 3 && <span className="text-3xl">🎧</span>}
                   </div>
                   <div className="text-4xl md:text-5xl font-black gradient-text mb-2">{stat.number}</div>
-                  <div className="text-blue-200 font-semibold">{stat.label}</div>
+                  <div className="text-blue-700 font-semibold">{stat.label}</div>
                 </div>
               ))}
             </div>
@@ -156,11 +156,11 @@ export default function HomePage() {
         </section>
 
           {/* Platform Benefits Section */}
-        <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white/50">
+        <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold gradient-text mb-4">Edusanna Benefits for Everyone</h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+            <p className="text-xl text-blue-700 max-w-2xl mx-auto">
               Whether you're a student, professional, teacher or entrepreneur, Edusanna empowers you with the skills to succeed
             </p>
           </div>
@@ -169,15 +169,15 @@ export default function HomePage() {
             {platformBenefits.map((category) => (
               <div
                 key={category.title}
-                className="bg-gradient-to-br from-blue-50 to-gray-50 rounded-lg p-8 border border-blue-100"
+                className="bg-gradient-to-br from-white to-blue-50 rounded-2xl p-8 border border-blue-100 shadow-md hover:shadow-lg transition-shadow"
               >
-                <h3 className="text-xl font-bold text-gray-900 mb-4">
+                <h3 className="text-xl font-bold text-blue-900 mb-4">
                   {category.title}
                 </h3>
                 <ul className="space-y-3">
                   {category.benefits.map((benefit, idx) => (
                     <li key={idx} className="flex gap-3 items-start">
-                      <span className="text-gray-700">{benefit}</span>
+                      <span className="text-blue-800">{benefit}</span>
                     </li>
                   ))}
                 </ul>
@@ -188,24 +188,24 @@ export default function HomePage() {
         </section>
 
           {/* Features Section */}
-        <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
+        <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-white to-blue-50">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold gradient-text mb-4">Why Choose EDUSANNA?</h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+            <p className="text-xl text-blue-700 max-w-2xl mx-auto">
               Africa's leading online learning platform with proven excellence
             </p>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {features.map((feature, index) => (
-              <Card key={index} className="course-card text-center border-gray-200">
+              <Card key={index} className="course-card text-center border-blue-100">
                 <CardContent className="p-6">
-                  <div className="w-16 h-16 bg-gradient-to-r from-blue-100 to-blue-200 rounded-2xl flex items-center justify-center mx-auto mb-4 text-blue-600">
+                  <div className="w-16 h-16 bg-gradient-to-br from-blue-100 to-purple-100 rounded-2xl flex items-center justify-center mx-auto mb-4 text-blue-600">
                     {feature.icon}
                   </div>
-                  <h3 className="text-xl font-semibold mb-3 text-gray-800">{feature.title}</h3>
-                  <p className="text-gray-600 leading-relaxed">{feature.description}</p>
+                  <h3 className="text-xl font-semibold mb-3 text-blue-900">{feature.title}</h3>
+                  <p className="text-blue-700 leading-relaxed">{feature.description}</p>
                 </CardContent>
               </Card>
             ))}
@@ -213,9 +213,9 @@ export default function HomePage() {
 
           <div className="mt-16 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
             {platformFeatures.map((feature, idx) => (
-              <div key={idx} className="flex items-center gap-2 p-4 bg-blue-50 rounded-lg">
+              <div key={idx} className="flex items-center gap-2 p-4 bg-white rounded-xl border border-blue-100 shadow-sm">
                 <CheckCircle className="w-5 h-5 text-blue-600 flex-shrink-0" />
-                <span className="text-sm font-medium text-gray-700">{feature}</span>
+                <span className="text-sm font-medium text-blue-800">{feature}</span>
               </div>
             ))}
           </div>
@@ -223,40 +223,40 @@ export default function HomePage() {
         </section>
 
           {/* How It Works */}
-        <section className="py-20 px-4 sm:px-6 lg:px-8 relative z-10">
+        <section className="py-20 px-4 sm:px-6 lg:px-8 relative z-10 bg-white">
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-slate-900 mb-4">How It Works</h2>
-            <p className="text-xl text-slate-700">Simple, transparent and student-focused</p>
+            <h2 className="text-4xl font-bold text-blue-900 mb-4">How It Works</h2>
+            <p className="text-xl text-blue-700">Simple, transparent and student-focused</p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
-            <div className="text-center backdrop-blur-xl bg-white/10 rounded-2xl p-8 border border-white/20">
-              <div className="w-16 h-16 bg-gradient-to-br from-emerald-400/40 to-emerald-600/40 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-bold text-emerald-700">
+            <div className="text-center bg-gradient-to-br from-white to-blue-50 rounded-2xl p-8 border border-blue-100 shadow-md hover:shadow-lg transition-shadow">
+              <div className="w-16 h-16 bg-gradient-to-br from-blue-100 to-blue-200 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-bold text-blue-700">
                 1
               </div>
-              <h3 className="text-xl font-semibold mb-3 text-slate-900">Sign Up Free</h3>
-              <p className="text-slate-700">
+              <h3 className="text-xl font-semibold mb-3 text-blue-900">Sign Up Free</h3>
+              <p className="text-blue-700">
                 Create your account in seconds. No credit card required. Access all courses immediately.
               </p>
             </div>
 
-            <div className="text-center backdrop-blur-xl bg-white/10 rounded-2xl p-8 border border-white/20">
-              <div className="w-16 h-16 bg-gradient-to-br from-blue-400/40 to-blue-600/40 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-bold text-blue-700">
+            <div className="text-center bg-gradient-to-br from-white to-purple-50 rounded-2xl p-8 border border-purple-100 shadow-md hover:shadow-lg transition-shadow">
+              <div className="w-16 h-16 bg-gradient-to-br from-purple-100 to-purple-200 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-bold text-purple-700">
                 2
               </div>
-              <h3 className="text-xl font-semibold mb-3 text-slate-900">Learn & Progress</h3>
-              <p className="text-slate-700">
+              <h3 className="text-xl font-semibold mb-3 text-blue-900">Learn & Progress</h3>
+              <p className="text-blue-700">
                 Study as many courses as you want. Your progress is automatically saved across all devices.
               </p>
             </div>
 
-            <div className="text-center backdrop-blur-xl bg-white/10 rounded-2xl p-8 border border-white/20">
-              <div className="w-16 h-16 bg-gradient-to-br from-amber-400/40 to-amber-600/40 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-bold text-amber-700">
+            <div className="text-center bg-gradient-to-br from-white to-blue-50 rounded-2xl p-8 border border-blue-100 shadow-md hover:shadow-lg transition-shadow">
+              <div className="w-16 h-16 bg-gradient-to-br from-blue-100 to-purple-100 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-bold text-purple-700">
                 3
               </div>
-              <h3 className="text-xl font-semibold mb-3 text-slate-900">Get Certified</h3>
-              <p className="text-slate-700">
+              <h3 className="text-xl font-semibold mb-3 text-blue-900">Get Certified</h3>
+              <p className="text-blue-700">
                 When ready, purchase your Certificate ($12) or Diploma ($18) to prove your achievement.
               </p>
             </div>
@@ -265,15 +265,15 @@ export default function HomePage() {
         </section>
 
           {/* CTA Section */}
-        <section className="py-20 px-4 sm:px-6 lg:px-8">
+        <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-blue-50 to-white">
         <div className="max-w-4xl mx-auto">
-          <Card className="glass-card border-gray-200 shadow-2xl">
+          <Card className="glass-card-light shadow-lg border-blue-100">
             <CardContent className="p-12 text-center">
-              <div className="w-20 h-20 bg-gradient-to-r from-blue-600 to-blue-700 rounded-full flex items-center justify-center mx-auto mb-6">
+              <div className="w-20 h-20 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-6">
                 <CheckCircle className="w-10 h-10 text-white" />
               </div>
               <h2 className="text-3xl font-bold gradient-text mb-4">Ready to Transform Your Life?</h2>
-              <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
+              <p className="text-xl text-blue-700 mb-8 max-w-2xl mx-auto">
                 Join our community of learners and start your journey to personal and professional excellence today.
               </p>
               <Link href="/signup">
@@ -288,21 +288,21 @@ export default function HomePage() {
         </section>
 
           {/* Footer */}
-        <footer className="backdrop-blur-xl bg-white/10 border-t border-white/20 text-slate-900 py-12 px-4 sm:px-6 lg:px-8 relative z-10">
+        <footer className="backdrop-blur-md bg-white/80 border-t border-blue-200 text-blue-900 py-12 px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="flex items-center space-x-3 mb-4 md:mb-0">
-              <div className="w-10 h-10 rounded-full overflow-hidden shadow-lg border-2 border-blue-400">
+              <div className="w-10 h-10 rounded-full overflow-hidden shadow-md border-2 border-blue-500">
                 <img
                   src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/ChatGPT%20Image%20Jan%2022%2C%202026%2C%2012_21_21%20AM-WKqkdSRv1DtoghNmzkCDSdNQKXoMsG.png"
                   alt="Edusanna Logo"
                   className="w-full h-full object-cover"
                 />
               </div>
-              <span className="text-2xl font-bold">EDUSANNA</span>
+              <span className="text-2xl font-bold gradient-text">EDUSANNA</span>
             </div>
             <div className="text-center md:text-right">
-              <p className="text-slate-700">© 2025 EDUSANNA. Transforming lives through education.</p>
+              <p className="text-blue-700">© 2025 EDUSANNA. Transforming lives through education.</p>
             </div>
           </div>
         </div>

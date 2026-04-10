@@ -53,12 +53,12 @@ export default function LoginPage() {
       <div className="w-full max-w-md">
         {/* Header */}
         <div className="text-center mb-8">
-          <Link href="/" className="inline-flex items-center text-purple-600 hover:text-purple-700 mb-4">
+          <Link href="/" className="inline-flex items-center text-blue-600 hover:text-blue-700 mb-4">
             <ArrowLeft className="w-4 h-4 mr-2" />
             Back to Home
           </Link>
           <div className="flex items-center justify-center space-x-2 mb-4">
-            <div className="w-12 h-12 rounded-full overflow-hidden shadow-lg border-2 border-blue-600">
+            <div className="w-12 h-12 rounded-full overflow-hidden shadow-md border-2 border-blue-500">
               <img
                 src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/ChatGPT%20Image%20Jan%2022%2C%202026%2C%2012_21_21%20AM-WKqkdSRv1DtoghNmzkCDSdNQKXoMsG.png"
                 alt="Edusanna Logo"
@@ -67,19 +67,19 @@ export default function LoginPage() {
             </div>
             <span className="text-3xl font-bold gradient-text">EDUSANNA</span>
           </div>
-          <h1 className="text-2xl font-bold text-gray-800 mb-2">Welcome Back</h1>
-          <p className="text-gray-600">Continue your learning journey</p>
+          <h1 className="text-2xl font-bold text-blue-900 mb-2">Welcome Back</h1>
+          <p className="text-blue-700">Continue your learning journey</p>
         </div>
 
         {/* Login Form */}
-        <Card className="glass-card border-0 shadow-2xl">
+        <Card className="glass-card-light shadow-lg border-blue-100">
           <CardHeader className="text-center pb-4">
             <CardTitle className="text-xl gradient-text">Sign In to Your Account</CardTitle>
           </CardHeader>
           <CardContent>
             <form onSubmit={handleSubmit} className="space-y-6">
               <div>
-                <Label htmlFor="email" className="flex items-center text-gray-700 mb-2">
+                <Label htmlFor="email" className="flex items-center text-blue-900 mb-2">
                   <Mail className="w-4 h-4 mr-2" />
                   Email Address
                 </Label>
@@ -90,13 +90,13 @@ export default function LoginPage() {
                   required
                   value={formData.email}
                   onChange={handleChange}
-                  className="h-12 border-gray-200 focus:border-purple-500 focus:ring-purple-500"
+                  className="h-12 border-blue-200 focus:border-blue-500 focus:ring-blue-500"
                   placeholder="Enter your email"
                 />
               </div>
 
               <div>
-                <Label htmlFor="password" className="flex items-center text-gray-700 mb-2">
+                <Label htmlFor="password" className="flex items-center text-blue-900 mb-2">
                   <Lock className="w-4 h-4 mr-2" />
                   Password
                 </Label>
@@ -107,7 +107,7 @@ export default function LoginPage() {
                   required
                   value={formData.password}
                   onChange={handleChange}
-                  className="h-12 border-gray-200 focus:border-purple-500 focus:ring-purple-500"
+                  className="h-12 border-blue-200 focus:border-blue-500 focus:ring-blue-500"
                   placeholder="Enter your password"
                 />
               </div>
@@ -119,19 +119,19 @@ export default function LoginPage() {
 
             <div className="relative my-6">
               <div className="absolute inset-0 flex items-center">
-                <div className="w-full border-t border-gray-200"></div>
+                <div className="w-full border-t border-blue-200"></div>
               </div>
               <div className="relative flex justify-center text-sm">
-                <span className="px-2 bg-white text-gray-500">Or continue with</span>
+                <span className="px-2 bg-white text-blue-600">Or continue with</span>
               </div>
             </div>
 
             <GoogleSignInButton />
 
             <div className="text-center mt-6">
-              <p className="text-gray-600">
+              <p className="text-blue-700">
                 Don't have an account?{" "}
-                <Link href="/signup" className="text-purple-600 hover:text-purple-700 font-semibold">
+                <Link href="/signup" className="text-blue-600 hover:text-blue-700 font-semibold">
                   Create Account
                 </Link>
               </p>
