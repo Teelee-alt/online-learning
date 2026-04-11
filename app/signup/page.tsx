@@ -27,11 +27,27 @@ export default function SignupPage() {
     e.preventDefault()
     setIsLoading(true)
 
-    // Simulate API call
+    // Validate passwords match
+    if (formData.password !== formData.confirmPassword) {
+      alert("Passwords do not match!")
+      setIsLoading(false)
+      return
+    }
+
+    // Simulate API call to create account
     await new Promise((resolve) => setTimeout(resolve, 2000))
 
-    // Redirect to courses page
-    window.location.href = "/courses"
+    // Automatically sign in the user by storing session
+    localStorage.setItem("isLoggedIn", "true")
+    localStorage.setItem("userEmail", formData.email)
+    localStorage.setItem("userName", formData.fullName)
+    localStorage.setItem("joinDate", new Date().toISOString().split('T')[0])
+    localStorage.setItem("userPhone", formData.mobileNumber)
+    localStorage.setItem("userCountry", formData.country)
+    localStorage.setItem("userCity", formData.city)
+
+    // Redirect to dashboard (auto-logged in)
+    window.location.href = "/dashboard"
   }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -50,15 +66,14 @@ export default function SignupPage() {
             <ArrowLeft className="w-4 h-4 mr-2" />
             Back to Home
           </Link>
-          <div className="flex items-center justify-center space-x-2 mb-4">
-            <div className="w-12 h-12 rounded-full overflow-hidden shadow-md border-2 border-blue-500">
+          <div className="flex items-center justify-center mb-4">
+            <div className="w-24 h-24 rounded-full overflow-hidden shadow-md">
               <img
-                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/ChatGPT%20Image%20Jan%2022%2C%202026%2C%2012_21_21%20AM-WKqkdSRv1DtoghNmzkCDSdNQKXoMsG.png"
+                src="/edusanna-logo.png"
                 alt="Edusanna Logo"
                 className="w-full h-full object-cover"
               />
             </div>
-            <span className="text-3xl font-bold gradient-text">EDUSANNA</span>
           </div>
           <h1 className="text-2xl font-bold text-blue-900 mb-2">Create Your Account</h1>
           <p className="text-blue-700">Join thousands of learners transforming their lives</p>

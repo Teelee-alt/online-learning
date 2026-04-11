@@ -70,32 +70,35 @@ export default function HomePage() {
         {/* Navigation */}
         <nav className="fixed top-0 w-full z-50 backdrop-blur-xl bg-white/70 border-b border-blue-200/30">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex justify-between items-center h-20 relative z-10">
+            <div className="flex justify-between items-center h-20 relative z-10 gap-2">
               <button
                 onClick={handleLogoTap}
-                className="flex items-center space-x-3 hover:opacity-90 transition transform hover:scale-105"
+                className="flex items-center space-x-2 sm:space-x-3 hover:opacity-90 transition transform hover:scale-105 min-w-0"
                 title="Edusanna - Elevate Your Mind"
               >
-                <div className="w-14 h-14 rounded-full overflow-hidden shadow-md border-2 border-blue-500">
+                <div className="w-10 h-10 sm:w-14 sm:h-14 rounded-full overflow-hidden shadow-md border-2 border-blue-500 flex-shrink-0">
                   <img
-                    src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/ChatGPT%20Image%20Jan%2022%2C%202026%2C%2012_21_21%20AM-WKqkdSRv1DtoghNmzkCDSdNQKXoMsG.png"
+                    src="/edusanna-logo.png"
                     alt="Edusanna Logo"
                     className="w-full h-full object-cover"
                   />
                 </div>
-                <div>
-                  <span className="text-3xl font-bold gradient-text">EDUSANNA</span>
+                <div className="hidden sm:block">
+                  <span className="text-xl sm:text-3xl font-bold gradient-text block">EDUSANNA</span>
                   <div className="text-xs text-blue-600 font-medium">Elevate Your Mind</div>
                 </div>
               </button>
-              <div className="flex items-center space-x-4">
-                <Link href="/login">
-                  <Button variant="ghost" className="text-blue-700 hover:text-blue-800 hover:bg-blue-50">
+              <div className="flex items-center gap-1 sm:gap-4 flex-shrink-0">
+                <Link href="/login" className="hidden sm:inline">
+                  <Button variant="ghost" className="text-blue-700 hover:text-blue-800 hover:bg-blue-50 text-sm">
                     Login
                   </Button>
                 </Link>
-                <Link href="/signup">
-                  <Button className="premium-button">Get Started</Button>
+                <Link href="/signup" className="w-auto">
+                  <Button className="premium-button text-xs sm:text-base px-2 sm:px-6 py-2 h-auto sm:h-10">
+                    <span className="hidden sm:inline">Get Started</span>
+                    <span className="sm:hidden">Start</span>
+                  </Button>
                 </Link>
               </div>
             </div>

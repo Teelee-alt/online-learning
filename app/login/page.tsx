@@ -22,11 +22,14 @@ export default function LoginPage() {
     e.preventDefault()
     setIsLoading(true)
 
-    // Check for admin credentials
-    if (formData.email === "africanedusanna@gmail.com" && formData.password === "admin#1") {
+    // Check for admin credentials - use environment variable for security
+    const adminEmail = process.env.NEXT_PUBLIC_ADMIN_EMAIL || "edusannaonlinelearning@gmail.com"
+    const isAdmin = formData.email === adminEmail && formData.password === process.env.NEXT_PUBLIC_ADMIN_PASSWORD
+    
+    if (isAdmin) {
       localStorage.setItem("isAdmin", "true")
       localStorage.setItem("adminEmail", formData.email)
-      window.location.href = "/admin"
+      window.location.href = "/admin/verify-2fa"
       return
     }
 
@@ -57,15 +60,14 @@ export default function LoginPage() {
             <ArrowLeft className="w-4 h-4 mr-2" />
             Back to Home
           </Link>
-          <div className="flex items-center justify-center space-x-2 mb-4">
-            <div className="w-12 h-12 rounded-full overflow-hidden shadow-md border-2 border-blue-500">
+          <div className="flex items-center justify-center mb-4">
+            <div className="w-24 h-24 rounded-full overflow-hidden shadow-md">
               <img
-                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/ChatGPT%20Image%20Jan%2022%2C%202026%2C%2012_21_21%20AM-WKqkdSRv1DtoghNmzkCDSdNQKXoMsG.png"
+                src="/edusanna-logo.png"
                 alt="Edusanna Logo"
                 className="w-full h-full object-cover"
               />
             </div>
-            <span className="text-3xl font-bold gradient-text">EDUSANNA</span>
           </div>
           <h1 className="text-2xl font-bold text-blue-900 mb-2">Welcome Back</h1>
           <p className="text-blue-700">Continue your learning journey</p>

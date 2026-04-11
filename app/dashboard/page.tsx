@@ -27,16 +27,19 @@ import {
 export default function DashboardPage() {
   const [activeTab, setActiveTab] = useState("overview")
 
-  // Mock user data
+  // Get user data from localStorage (set during signup/login)
+  const userEmail = typeof window !== 'undefined' ? localStorage.getItem("userEmail") : ""
+  const userName = typeof window !== 'undefined' ? localStorage.getItem("userName") : ""
+
   const user = {
-    fullName: "Sarah Johnson",
-    email: "sarah.johnson@email.com",
-    joinDate: "2024-01-15",
-    completedCertificates: 2,
-    completedDiplomas: 1,
-    inProgressCourses: 2,
-    totalHours: 65,
-    avgScore: 4.8,
+    fullName: userName || "User",
+    email: userEmail || "user@email.com",
+    joinDate: typeof window !== 'undefined' ? (localStorage.getItem("joinDate") || "2024-01-15") : "2024-01-15",
+    completedCertificates: 0,
+    completedDiplomas: 0,
+    inProgressCourses: 0,
+    totalHours: 0,
+    avgScore: 0,
   }
 
   const enrolledCourses = [
