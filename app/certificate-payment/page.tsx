@@ -54,6 +54,16 @@ export default function CertificatePaymentPage() {
   const [error, setError] = useState<string | null>(null);
   const [paypalLoaded, setPaypalLoaded] = useState(false);
   const [processing, setProcessing] = useState(false);
+  
+  // Validate environment variables on mount
+  const [envError, setEnvError] = useState<string | null>(null);
+  
+  useEffect(() => {
+    if (!process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID) {
+      setEnvError('PayPal configuration is missing. Please contact support.');
+      setLoading(false);
+    }
+  }, []);
 
   const certificatePrice = 12;
   const diplomaPrice = 18;
@@ -242,6 +252,21 @@ export default function CertificatePaymentPage() {
       })
       .render(paypalButtonsRef.current);
   }, [paypalLoaded, selectedCourse, certificateType, completedCourses, amount, user, processing]);
+
+  if (envError) {
+    return (
+      <div className="min-h-screen bg-gradient-to-b from-white to-blue-50 pt-32 pb-20">
+        <div className="max-w-2xl mx-auto px-4">
+          <Card className="glass-card-light shadow-lg border-red-100">
+            <CardContent className="p-8 text-center">
+              <AlertCircle className="w-12 h-12 text-red-600 mx-auto mb-4" />
+              <p className="text-red-700 font-medium">{envError}</p>
+            </CardContent>
+          </Card>
+        </div>
+      </div>
+    );
+  }
 
   if (loading) {
     return (

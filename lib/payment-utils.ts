@@ -7,12 +7,14 @@ const supabase = createClient(
 
 /**
  * Generate a unique certificate ID
- * Format: CERT-${timestamp}-${random6digits}
+ * Format: CERT-${timestamp}-${alphanumeric}
+ * Much more collision-resistant than numeric random
  */
 export function generateCertificateId(): string {
   const timestamp = Date.now();
-  const random = Math.floor(Math.random() * 1000000).toString().padStart(6, '0');
-  return `CERT-${timestamp}-${random}`;
+  // Generate random alphanumeric string (more entropy than just numbers)
+  const randomPart = Math.random().toString(36).substring(2, 15).toUpperCase();
+  return `CERT-${timestamp}-${randomPart}`;
 }
 
 /**

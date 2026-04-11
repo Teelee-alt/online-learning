@@ -57,8 +57,16 @@ export default function AdminPaymentsPage() {
           return;
         }
 
-        // TODO: Add proper admin role check
-        // For now, fetch all payments
+        // Check admin role - look for admin flag in user metadata
+        const isAdmin = user.user_metadata?.is_admin === true || 
+                       user.user_metadata?.role === 'admin' ||
+                       user.email === process.env.NEXT_PUBLIC_ADMIN_EMAIL;
+
+        if (!isAdmin) {
+          console.warn('[Admin] Unauthorized access attempt:', user.email);
+          router.push('/unauthorized');
+          return;
+        }
         const { data, error: fetchError } = await supabase
           .from('certificate_payments')
           .select('*')
