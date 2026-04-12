@@ -4,21 +4,18 @@ import { useEffect } from "react"
 import { useRouter } from "next/navigation"
 
 export default function AdminPage() {
-  const router = useRouter()
 
-  useEffect(() => {
-    // Redirect admin users to dashboard
-    const isAdmin = localStorage.getItem("isAdmin") === "true"
-    if (isAdmin) {
-      router.push("/admin/dashboard")
-    } else {
-      // Non-admin users are redirected to login
-      router.push("/login")
-    }
-  }, [router])
+  return (
+    <div className="min-h-screen relative overflow-hidden">
 
-  return null
-}
+      {/* Particle effect overlay */}
+      <div className="absolute inset-0 opacity-20">
+        <div className="absolute top-20 right-20 w-2 h-2 bg-white rounded-full animate-pulse"></div>
+        <div
+          className="absolute top-40 right-40 w-1 h-1 bg-purple-300 rounded-full animate-pulse"
+          style={{ animationDelay: "0.5s" }}
+        ></div>
+      </div>
 
 /*
 ORIGINAL CONTENT BELOW - REPLACED WITH REDIRECT
