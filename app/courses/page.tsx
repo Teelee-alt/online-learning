@@ -1,7 +1,8 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import Link from "next/link"
+import { useRouter } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
@@ -10,9 +11,17 @@ import { BookOpen, Search, GraduationCap, Award, Clock, Filter, ArrowRight, Arro
 import { courseCatalog, getAllLetters, courseCategories } from "@/lib/course-catalog"
 
 export default function CoursesPage() {
+  const router = useRouter()
+  const [isLoggedIn, setIsLoggedIn] = useState(false)
   const [searchTerm, setSearchTerm] = useState("")
   const [selectedLetter, setSelectedLetter] = useState<string | null>(null)
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null)
+
+  useEffect(() => {
+    // Check if user is logged in
+    const loggedIn = localStorage.getItem("isLoggedIn") === "true"
+    setIsLoggedIn(loggedIn)
+  }, [])
 
   const letters = getAllLetters()
 
@@ -56,9 +65,15 @@ export default function CoursesPage() {
                   Verify Certificate
                 </Button>
               </Link>
-              <Link href="/login">
-                <Button className="premium-button">Sign In</Button>
-              </Link>
+              {!isLoggedIn ? (
+                <Link href="/login">
+                  <Button className="premium-button">Sign In</Button>
+                </Link>
+              ) : (
+                <Link href="/dashboard">
+                  <Button className="premium-button">My Dashboard</Button>
+                </Link>
+              )}
             </div>
           </div>
         </div>

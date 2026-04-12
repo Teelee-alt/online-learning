@@ -114,7 +114,7 @@ export default function DashboardPage() {
                   .join("")}
               </div>
               <div className="text-center sm:text-left flex-1">
-                <h1 className="text-2xl sm:text-3xl font-bold gradient-text text-balance">Welcome back, {user.fullName}!</h1>
+                <h1 className="text-2xl sm:text-3xl font-bold gradient-text text-balance">Welcome, {user.fullName}!</h1>
                 <p className="text-gray-600 text-sm sm:text-base">Continue your learning journey</p>
               </div>
             </div>

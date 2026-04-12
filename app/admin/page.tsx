@@ -1,5 +1,28 @@
 "use client";
 
+import { useEffect } from "react"
+import { useRouter } from "next/navigation"
+
+export default function AdminPage() {
+  const router = useRouter()
+
+  useEffect(() => {
+    // Redirect admin users to dashboard
+    const isAdmin = localStorage.getItem("isAdmin") === "true"
+    if (isAdmin) {
+      router.push("/admin/dashboard")
+    } else {
+      // Non-admin users are redirected to login
+      router.push("/login")
+    }
+  }, [router])
+
+  return null
+}
+
+/*
+ORIGINAL CONTENT BELOW - REPLACED WITH REDIRECT
+
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
@@ -8,7 +31,7 @@ import { useSecretAdminAccess } from "@/hooks/use-secret-admin-access"
 import { SecretAdminModal } from "@/components/secret-admin-modal"
 import { platformBenefits, platformFeatures } from "@/lib/seo-content"
 
-export default function HomePage() {
+export default function HomePageOld() {
   const {
     showSecretPrompt,
     code1,

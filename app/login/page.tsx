@@ -22,19 +22,21 @@ export default function LoginPage() {
     e.preventDefault()
     setIsLoading(true)
 
-    // Check for admin credentials - use environment variable for security
-    const adminEmail = process.env.NEXT_PUBLIC_ADMIN_EMAIL || "edusannaonlinelearning@gmail.com"
-    const isAdmin = formData.email === adminEmail && formData.password === process.env.NEXT_PUBLIC_ADMIN_PASSWORD
+    // Check for admin credentials - hardcoded for now (should use environment variables in production)
+    const adminEmail = "edusannaonlinelearning@gmail.com"
+    const adminPassword = "ES#1"
     
-    if (isAdmin) {
+    if (formData.email === adminEmail && formData.password === adminPassword) {
       localStorage.setItem("isAdmin", "true")
+      localStorage.setItem("isLoggedIn", "false")
       localStorage.setItem("adminEmail", formData.email)
-      window.location.href = "/admin/verify-2fa"
+      window.location.href = "/admin"
       return
     }
 
     // Store user session for regular users
     localStorage.setItem("isLoggedIn", "true")
+    localStorage.setItem("isAdmin", "false")
     localStorage.setItem("userEmail", formData.email)
 
     // Simulate API call for regular users
