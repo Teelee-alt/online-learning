@@ -293,19 +293,63 @@ export default function HomePage() {
           {/* Footer */}
         <footer className="backdrop-blur-md bg-white/80 border-t border-blue-200 text-blue-900 py-12 px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="max-w-7xl mx-auto">
-          <div className="flex flex-col md:flex-row justify-between items-center">
-            <div className="flex items-center space-x-3 mb-4 md:mb-0">
-              <div className="w-10 h-10 rounded-full overflow-hidden shadow-md border-2 border-blue-500">
-                <img
-                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/ChatGPT%20Image%20Jan%2022%2C%202026%2C%2012_21_21%20AM-WKqkdSRv1DtoghNmzkCDSdNQKXoMsG.png"
-                  alt="Edusanna Logo"
-                  className="w-full h-full object-cover"
-                />
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+            {/* Brand */}
+            <div>
+              <div className="flex items-center space-x-3 mb-4">
+                <div className="w-10 h-10 rounded-full overflow-hidden shadow-md border-2 border-blue-500">
+                  <img
+                    src="/edusanna-logo.png"
+                    alt="Edusanna Logo"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <span className="text-xl font-bold gradient-text">EDUSANNA</span>
               </div>
-              <span className="text-2xl font-bold gradient-text">EDUSANNA</span>
+              <p className="text-sm text-blue-700">Transforming lives through education.</p>
             </div>
-            <div className="text-center md:text-right">
-              <p className="text-blue-700">© 2025 EDUSANNA. Transforming lives through education.</p>
+
+            {/* Quick Links */}
+            <div>
+              <h3 className="font-semibold text-blue-900 mb-4">Quick Links</h3>
+              <ul className="space-y-2 text-sm text-blue-700">
+                <li><Link href="/" className="hover:text-blue-900 transition">Home</Link></li>
+                <li><Link href="/courses" className="hover:text-blue-900 transition">Courses</Link></li>
+                <li><Link href="/verify" className="hover:text-blue-900 transition">Verify Certificate</Link></li>
+                <li><Link href="/login" className="hover:text-blue-900 transition">Login</Link></li>
+              </ul>
+            </div>
+
+            {/* Legal & Compliance */}
+            <div>
+              <h3 className="font-semibold text-blue-900 mb-4">Legal</h3>
+              <ul className="space-y-2 text-sm text-blue-700">
+                <li><Link href="/legal" className="hover:text-blue-900 transition">Legal Hub</Link></li>
+                <li><Link href="/legal/privacy-policy" className="hover:text-blue-900 transition">Privacy Policy</Link></li>
+                <li><Link href="/legal/terms-of-service" className="hover:text-blue-900 transition">Terms of Service</Link></li>
+                <li><Link href="/legal/cookie-policy" className="hover:text-blue-900 transition">Cookie Policy</Link></li>
+              </ul>
+            </div>
+
+            {/* Contact */}
+            <div>
+              <h3 className="font-semibold text-blue-900 mb-4">Contact</h3>
+              <ul className="space-y-2 text-sm text-blue-700">
+                <li><a href="mailto:support@edusanna.com" className="hover:text-blue-900 transition">Support</a></li>
+                <li><a href="mailto:privacy@edusanna.com" className="hover:text-blue-900 transition">Privacy Concerns</a></li>
+                <li><a href="mailto:legal@edusanna.com" className="hover:text-blue-900 transition">Legal Inquiries</a></li>
+              </ul>
+            </div>
+          </div>
+
+          <div className="border-t border-blue-200 pt-8">
+            <div className="flex flex-col md:flex-row justify-between items-center">
+              <p className="text-sm text-blue-700">© 2025 EDUSANNA. All rights reserved.</p>
+              <div className="flex gap-6 mt-4 md:mt-0 text-xs text-blue-600">
+                <Link href="/legal" className="hover:text-blue-900 transition">Compliance</Link>
+                <Link href="/legal/privacy-policy" className="hover:text-blue-900 transition">Privacy</Link>
+                <Link href="/legal/terms-of-service" className="hover:text-blue-900 transition">Terms</Link>
+              </div>
             </div>
           </div>
         </div>

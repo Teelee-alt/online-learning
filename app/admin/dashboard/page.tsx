@@ -5,30 +5,81 @@ import { useRouter } from "next/navigation"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { LogOut, Users, CreditCard, Award, BarChart3, Settings } from "lucide-react"
+import { LogOut, Users, CreditCard, Award, BarChart3, Settings, School, Bell } from "lucide-react"
+
+interface AnalyticsData {
+  totalUsers: number
+  totalPayments: number
+  totalInstitutions: number
+  totalRevenue: number
+}
 
 export default function AdminDashboard() {
   const router = useRouter()
   const [isAdmin, setIsAdmin] = useState(false)
-  const [adminEmail, setAdminEmail] = useState("")
+  const [adminId, setAdminId] = useState("")
+  const [analytics, setAnalytics] = useState<AnalyticsData>({
+    totalUsers: 0,
+    totalPayments: 0,
+    totalInstitutions: 0,
+    totalRevenue: 0,
+  })
+  const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
     // Check admin status on mount
     const admin = localStorage.getItem("isAdmin") === "true"
-    const email = localStorage.getItem("adminEmail") || ""
+    const session = localStorage.getItem("adminSession")
+    const id = localStorage.getItem("adminId") || ""
 
-    if (!admin) {
+    if (!admin || !session) {
       router.push("/login")
       return
     }
 
     setIsAdmin(true)
-    setAdminEmail(email)
+    setAdminId(id)
+
+    // Fetch analytics data
+    fetchAnalytics()
   }, [router])
 
-  const handleLogout = () => {
+  const fetchAnalytics = async () => {
+    try {
+      setIsLoading(true)
+      
+      // For now, use static data until database is set up
+      // This will be updated to fetch from /api/admin/analytics
+      setAnalytics({
+        totalUsers: 0,
+        totalPayments: 0,
+        totalInstitutions: 0,
+        totalRevenue: 0,
+      })
+    } catch (err) {
+      console.error("[Analytics Error]", err)
+    } finally {
+      setIsLoading(false)
+    }
+  }
+
+  const handleLogout = async () => {
+    try {
+      const sessionToken = localStorage.getItem("adminSession")
+      if (sessionToken) {
+        await fetch("/api/admin/logout", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ sessionToken }),
+        })
+      }
+    } catch (err) {
+      console.error("[Logout Error]", err)
+    }
+
     localStorage.setItem("isAdmin", "false")
-    localStorage.removeItem("adminEmail")
+    localStorage.removeItem("adminSession")
+    localStorage.removeItem("adminId")
     window.location.href = "/login"
   }
 
@@ -37,10 +88,10 @@ export default function AdminDashboard() {
   }
 
   const adminStats = [
-    { label: "Total Users", value: "0", icon: Users, color: "bg-blue-100 text-blue-600" },
-    { label: "Payments", value: "0", icon: CreditCard, color: "bg-green-100 text-green-600" },
-    { label: "Certificates", value: "0", icon: Award, color: "bg-purple-100 text-purple-600" },
-    { label: "Revenue", value: "$0", icon: BarChart3, color: "bg-orange-100 text-orange-600" },
+    { label: "Total Users", value: analytics.totalUsers.toString(), icon: Users, color: "bg-blue-100 text-blue-600" },
+    { label: "Payments", value: analytics.totalPayments.toString(), icon: CreditCard, color: "bg-green-100 text-green-600" },
+    { label: "Institutions", value: analytics.totalInstitutions.toString(), icon: School, color: "bg-purple-100 text-purple-600" },
+    { label: "Revenue", value: "$" + analytics.totalRevenue.toFixed(2), icon: BarChart3, color: "bg-orange-100 text-orange-600" },
   ]
 
   return (
@@ -116,7 +167,7 @@ export default function AdminDashboard() {
                 <CardContent className="p-8">
                   <Users className="w-12 h-12 text-blue-600 mb-4" />
                   <h2 className="text-2xl font-bold text-blue-900 mb-2">Manage Users</h2>
-                  <p className="text-gray-600 mb-6">View, edit, and delete user accounts</p>
+                  <p className="text-gray-600 mb-6">View, edit, and manage user accounts and statuses</p>
                   <Button className="premium-button">Go to Users</Button>
                 </CardContent>
               </Card>
@@ -127,8 +178,30 @@ export default function AdminDashboard() {
                 <CardContent className="p-8">
                   <CreditCard className="w-12 h-12 text-green-600 mb-4" />
                   <h2 className="text-2xl font-bold text-blue-900 mb-2">Payment Management</h2>
-                  <p className="text-gray-600 mb-6">Track and manage certificate payments</p>
+                  <p className="text-gray-600 mb-6">Track payments and mark manual payments as paid</p>
                   <Button className="premium-button">Go to Payments</Button>
+                </CardContent>
+              </Card>
+            </Link>
+
+            <Link href="/admin/academia">
+              <Card className="glass-card-light cursor-pointer hover:shadow-lg transition-shadow h-full">
+                <CardContent className="p-8">
+                  <School className="w-12 h-12 text-indigo-600 mb-4" />
+                  <h2 className="text-2xl font-bold text-blue-900 mb-2">Academia Management</h2>
+                  <p className="text-gray-600 mb-6">Manage institutions and multi-school enrollment</p>
+                  <Button className="premium-button">Go to Academia</Button>
+                </CardContent>
+              </Card>
+            </Link>
+
+            <Link href="/admin/notifications">
+              <Card className="glass-card-light cursor-pointer hover:shadow-lg transition-shadow h-full">
+                <CardContent className="p-8">
+                  <Bell className="w-12 h-12 text-yellow-600 mb-4" />
+                  <h2 className="text-2xl font-bold text-blue-900 mb-2">Notifications</h2>
+                  <p className="text-gray-600 mb-6">Send and manage user notifications</p>
+                  <Button className="premium-button">Go to Notifications</Button>
                 </CardContent>
               </Card>
             </Link>
@@ -149,7 +222,7 @@ export default function AdminDashboard() {
                 <CardContent className="p-8">
                   <Settings className="w-12 h-12 text-orange-600 mb-4" />
                   <h2 className="text-2xl font-bold text-blue-900 mb-2">Settings</h2>
-                  <p className="text-gray-600 mb-6">Configure platform settings and policies</p>
+                  <p className="text-gray-600 mb-6">Configure platform settings and admin policies</p>
                   <Button className="premium-button">Go to Settings</Button>
                 </CardContent>
               </Card>
