@@ -22,28 +22,75 @@ export default function LoginPage() {
     e.preventDefault()
     setIsLoading(true)
 
-    // Check for admin credentials - hardcoded for now (should use environment variables in production)
-    const adminEmail = "edusannaonlinelearning@gmail.com"
-    const adminPassword = "ES#1"
-    
-    if (formData.email === adminEmail && formData.password === adminPassword) {
-      localStorage.setItem("isAdmin", "true")
-      localStorage.setItem("isLoggedIn", "false")
-      localStorage.setItem("adminEmail", formData.email)
-      window.location.href = "/admin"
-      return
+    try {
+      // Try admin login first
+      const loginResponse = await fetch('/api/admin/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          email: formData.email,
+          password: formData.password,
+        }),
+      })
+
+      if (loginResponse.ok) {
+        const data = await loginResponse.json()
+        
+        // Store session token
+        if (data.sessionToken) {
+          localStorage.setItem('adminSession', data.sessionToken)
+          localStorage.setItem('isAdmin', 'true')
+          localStorage.setItem('adminId', data.adminId)
+        }
+
+        // Redirect based on 2FA requirement
+        if (data.requiresTwoFA) {
+          localStorage.setItem('tempSessionToken', data.sessionToken)
+          window.location.href = '/admin/verify-2fa'
+        } else {
+          window.location.href = '/admin/dashboard'
+        }
+        return
+      } else if (loginResponse.status === 401) {
+        // Not admin, try regular user login
+        const errorData = await loginResponse.json()
+        console.log('[Login] Attempting regular user login:', errorData)
+      }
+    } catch (err) {
+      console.error('[Login Error]', err)
     }
 
-    // Store user session for regular users
-    localStorage.setItem("isLoggedIn", "true")
-    localStorage.setItem("isAdmin", "false")
-    localStorage.setItem("userEmail", formData.email)
+    // Regular user login (using Supabase Auth or existing system)
+    try {
+      const { createClient } = await import('@supabase/supabase-js')
+      const supabase = createClient(
+        process.env.NEXT_PUBLIC_SUPABASE_URL || '',
+        process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || ''
+      )
 
-    // Simulate API call for regular users
-    await new Promise((resolve) => setTimeout(resolve, 1500))
+      const { data, error } = await supabase.auth.signInWithPassword({
+        email: formData.email,
+        password: formData.password,
+      })
 
-    // Redirect to dashboard
-    window.location.href = "/dashboard"
+      if (error) {
+        alert('Login failed: ' + error.message)
+        setIsLoading(false)
+        return
+      }
+
+      // Store user session
+      localStorage.setItem('isLoggedIn', 'true')
+      localStorage.setItem('isAdmin', 'false')
+      localStorage.setItem('userEmail', formData.email)
+
+      // Redirect to dashboard
+      window.location.href = '/dashboard'
+    } catch (err) {
+      console.error('[Regular User Login Error]', err)
+      alert('An error occurred during login. Please try again.')
+      setIsLoading(false)
+    }
   }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {

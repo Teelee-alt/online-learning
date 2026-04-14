@@ -15,12 +15,18 @@ except ImportError:
 
 def get_connection_string():
     """Get Supabase connection string from environment"""
-    # Format: postgresql://user:password@host:port/database
+    # Try POSTGRES_URL first (direct connection), then build from components
+    postgres_url = os.getenv("POSTGRES_URL_NON_POOLING", os.getenv("POSTGRES_URL", ""))
+    
+    if postgres_url:
+        return postgres_url
+    
+    # Fallback: build connection string from components
     supabase_url = os.getenv("SUPABASE_URL", "")
-    supabase_key = os.getenv("SUPABASE_SERVICE_KEY", os.getenv("SUPABASE_KEY", ""))
+    supabase_key = os.getenv("SUPABASE_SERVICE_ROLE_KEY", os.getenv("SUPABASE_KEY", ""))
     
     if not supabase_url or not supabase_key:
-        raise ValueError("Missing SUPABASE_URL or SUPABASE_KEY environment variables")
+        raise ValueError("Missing connection credentials. Check POSTGRES_URL or SUPABASE_URL/SUPABASE_SERVICE_ROLE_KEY")
     
     # Extract host from URL (https://xxxx.supabase.co -> xxxx.supabase.co)
     host = supabase_url.replace("https://", "").replace("http://", "")
@@ -63,6 +69,37 @@ def run_sql_file(file_path):
         return False
 
 if __name__ == "__main__":
-    sql_file = "/vercel/share/v0-project/scripts/002_admin_tables.sql"
+    # Debug: print current working directory
+    cwd = os.getcwd()
+    print(f"Current working directory: {cwd}")
+    
+    # Find the SQL file - check multiple possible locations
+    possible_paths = [
+        "scripts/002_admin_tables.sql",
+        "./scripts/002_admin_tables.sql",
+        "/vercel/share/v0-project/scripts/002_admin_tables.sql",
+        os.path.join(cwd, "scripts/002_admin_tables.sql"),
+        os.path.join(cwd, "v0-project/scripts/002_admin_tables.sql"),
+    ]
+    
+    sql_file = None
+    for path in possible_paths:
+        print(f"Checking: {path}")
+        if os.path.exists(path):
+            sql_file = path
+            print(f"  Found!")
+            break
+    
+    if not sql_file:
+        print(f"✗ Could not find 002_admin_tables.sql. Checked: {possible_paths}")
+        # Try to list what's in scripts folder
+        try:
+            contents = os.listdir("scripts")
+            print(f"Contents of 'scripts' folder: {contents}")
+        except:
+            pass
+        sys.exit(1)
+    
+    print(f"\nUsing SQL file: {sql_file}\n")
     success = run_sql_file(sql_file)
     sys.exit(0 if success else 1)
